@@ -41,105 +41,10 @@
             <TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Schlüssel:</TextBlock>
             <TextBlock Grid.Column="0" Grid.Row="4" VerticalAlignment="Center">Chiffre:</TextBlock>
             <TextBlock Grid.Column="0" Grid.Row="6" VerticalAlignment="Center">Output Block n:</TextBlock>
-            
+
             <!-- ScrollViewer containing encryption blocks -->
             <ScrollViewer Grid.Row="0" Grid.Column="1" Grid.RowSpan="8" HorizontalScrollBarVisibility="Visible">
-                <StackPanel Orientation="Horizontal">
-                    <Grid RowDefinitions="40,40,40,40,40,40,40" RowSpacing="10">
-                        <!-- User input (character n) -->
-                        <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray"
-                                HorizontalAlignment="Left">
-                            <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">H</TextBlock>
-                        </Border>
-                        <!-- Bit representation -->
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                        </StackPanel>
-                        <!-- Key -->
-                        <StackPanel Grid.Row="2" Orientation="Horizontal">
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                        </StackPanel>
-                        <!-- XOR icon -->
-                        <Image Grid.Row="3" Width="40" Height="40" HorizontalAlignment="Center" Source="/Assets/xor.png" />
-                        <!-- Cipher -->
-                        <StackPanel Grid.Row="4" Orientation="Horizontal">
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                        </StackPanel>
-                        <!-- TODO P-box icon -->
-                        <!-- Output block n -->
-                        <StackPanel Grid.Row="6" Orientation="Horizontal">
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
-                                <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
-                            </Border>
-                        </StackPanel>
-                    </Grid>
-                    <Border Margin="10 0" Background="Black" Width="2.5"/>
+                <StackPanel x:Name="BlockContainer" Orientation="Horizontal">
                 </StackPanel>
             </ScrollViewer>
         </Grid>

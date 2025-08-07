@@ -6,6 +6,7 @@
         <entry key="App.axaml" value="Betriebsmodi.csproj" />
         <entry key="Block.axaml" value="Betriebsmodi.csproj" />
         <entry key="BlockArray.axaml" value="Betriebsmodi.csproj" />
+        <entry key="BlockControl.axaml" value="Betriebsmodi.csproj" />
         <entry key="BlockSingle.axaml" value="Betriebsmodi.csproj" />
         <entry key="Views/MainWindow.axaml" value="Betriebsmodi.csproj" />
       </map>

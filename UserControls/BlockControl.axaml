@@ -1,0 +1,97 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Betriebsmodi.ViewModels"
+             xmlns:userControls="clr-namespace:Betriebsmodi.UserControls"
+             mc:Ignorable="d"
+             x:Class="Betriebsmodi.UserControls.BlockControl"
+             x:DataType="vm:BlockControlViewModel">
+    <Grid RowDefinitions="40,40,40,40,40,40,40" RowSpacing="10" ColumnDefinitions="Auto, Auto">
+        <!-- User input (character n) -->
+        <Border Grid.Column="0" Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray"
+                HorizontalAlignment="Left">
+            <TextBlock x:Name="CharacterN" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Text="{Binding CharacterN }" />
+        </Border>
+        <!-- Bit representation -->
+        <ItemsControl ItemsSource="{Binding CharacterString}" Grid.Row="1" Grid.Column="0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                        <TextBlock Text="{Binding}" FontSize="24"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <!-- Key -->
+        <ItemsControl ItemsSource="{Binding KeyString}" Grid.Row="2" Grid.Column="0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                        <TextBlock Text="{Binding}" FontSize="24"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <!-- XOR icon -->
+        <Image Grid.Column="0" Grid.Row="3" Width="40" Height="40" HorizontalAlignment="Center"
+               Source="/Assets/xor.png" />
+        <!-- Cipher -->
+        <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal">
+            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                <TextBlock x:Name="Cipher0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
+            </Border>
+            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                <TextBlock x:Name="Cipher1" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
+            </Border>
+            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                <TextBlock x:Name="Cipher2" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
+            </Border>
+            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                <TextBlock x:Name="Cipher3" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
+            </Border>
+            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                <TextBlock x:Name="Cipher4" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
+            </Border>
+            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                <TextBlock x:Name="Cipher5" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
+            </Border>
+        </StackPanel>
+        <!-- TODO P-box icon -->
+        <!-- Output block n -->
+        <StackPanel Grid.Column="0" Grid.Row="6" Orientation="Horizontal">
+            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                <TextBlock x:Name="Output0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
+            </Border>
+            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                <TextBlock x:Name="Output1" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
+            </Border>
+            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                <TextBlock x:Name="Output2" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
+            </Border>
+            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                <TextBlock x:Name="Output3" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
+            </Border>
+            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                <TextBlock x:Name="Output4" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
+            </Border>
+            <Border Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                <TextBlock x:Name="Output5" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">0</TextBlock>
+            </Border>
+        </StackPanel>
+        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="7" Margin="10 0" Background="Black" Width="2.5" />
+    </Grid>
+</UserControl>
