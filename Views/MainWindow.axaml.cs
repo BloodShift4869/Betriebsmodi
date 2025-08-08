@@ -9,7 +9,9 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
-        BlockControl b = new BlockControl('y', 'p');
-        BlockContainer.Children.Add(b);
+        BlockContainer.Children.Add(new BlockControl('a', 'X'));
+        BlockContainer.Children.Add(new BlockControl('b', 'Y'));
+        BlockContainer.Children.Add(new BlockControl('c', 'Z'));
+        
     }
 }

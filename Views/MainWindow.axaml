@@ -34,7 +34,7 @@
 
         <!-- Main area -->
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" RowDefinitions="40,40,40,40,40,40,40,*"
-              ColumnDefinitions="Auto,*" Margin="30 0 0 10" RowSpacing="10">
+              ColumnDefinitions="Auto,*" Margin="30 0 0 10" RowSpacing="10" ColumnSpacing="10">
             <!-- Descriptive fields -->
             <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Benutzereingabe:</TextBlock>
             <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Bit. Repräsentation:</TextBlock>

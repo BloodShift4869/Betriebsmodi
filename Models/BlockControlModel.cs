@@ -2,14 +2,14 @@ namespace Betriebsmodi.Models;
 
 public class BlockControlModel
 {
-    public char CharacterN { get; set; }
-    public byte Character { get; }
-    public byte KeyN { get; set; }
+    public byte Character { get; set; }
+    public byte Key { get; set; }
+    public byte Cipher { get; set; }
+    public byte Output { get; set; }
 
     public BlockControlModel(char characterN, char keyN)
     {
-        CharacterN = characterN;
-        Character = (byte)(characterN - 64); 
-        KeyN = (byte)(keyN - 64);
+        Character = (byte)(characterN - 64);
+        Key = (byte)(keyN - 64);
     }
 }
