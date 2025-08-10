@@ -1,6 +1,8 @@
+using System;
+
 namespace Betriebsmodi.ViewModels;
 
-public class MenuViewModel
+public class MenuViewModel : ViewModelBase
 {
     public void OpenGuidedMode()
     {
@@ -14,6 +16,6 @@ public class MenuViewModel
 
     public void ExitApplication()
     {
-        
+        Environment.Exit(0);
     }
 }

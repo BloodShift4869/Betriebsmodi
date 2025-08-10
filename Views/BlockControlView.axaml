@@ -3,9 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:Betriebsmodi.ViewModels"
-             xmlns:userControls="clr-namespace:Betriebsmodi.UserControls"
              mc:Ignorable="d"
-             x:Class="Betriebsmodi.UserControls.BlockControl"
+             x:Class="Betriebsmodi.Views.BlockControlView"
              x:DataType="vm:BlockControlViewModel">
     <Grid RowDefinitions="40,40,40,40,40,40,40" RowSpacing="10" ColumnDefinitions="Auto, Auto">
         <!-- User input (character n) -->

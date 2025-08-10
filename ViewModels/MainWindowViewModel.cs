@@ -1,24 +1,26 @@
-﻿using System.Windows.Input;
-using Betriebsmodi.Views;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using ReactiveUI;
 
 namespace Betriebsmodi.ViewModels;
 
-public partial class MainWindowViewModel : ObservableObject
+public partial class MainWindowViewModel : ViewModelBase
 {
-    [ObservableProperty] private object? currentView = new Menu();
+    public ViewModelBase CurrentPage
+    {
+        get { return _CurrentPage; }
+        private set { this.RaiseAndSetIfChanged(ref _CurrentPage, value); }
+    }
     
-    public ICommand ChangeViewCommand { get; }
-
+    private ViewModelBase _CurrentPage;
+    private readonly ViewModelBase[] Pages =
+    {
+        new MenuViewModel(),
+        new GuidedModeViewModel(),
+        new FreeModeSelectionViewModel(),
+        new FreeModeViewModel(),
+    };
+    
     public MainWindowViewModel()
     {
-        currentView = new Menu();
-        
-        ChangeViewCommand = new RelayCommand(() =>
-        {
-            CurrentView = new GuidedMode();
-        });
-        
+        _CurrentPage = Pages[0];
     }
 }

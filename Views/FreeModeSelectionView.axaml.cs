@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace Betriebsmodi.Views;
 
-public partial class FreeModeSelection : Window
+public partial class FreeModeSelectionView : UserControl
 {
-    public FreeModeSelection()
+    public FreeModeSelectionView()
     {
         InitializeComponent();
     }

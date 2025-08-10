@@ -4,10 +4,11 @@ using Avalonia.Markup.Xaml;
 
 namespace Betriebsmodi.Views;
 
-public partial class FreeMode : Window
+public partial class FreeModeView : UserControl
 {
-    public FreeMode()
+    public FreeModeView()
     {
         InitializeComponent();
+        BlockContainer.Children.Add(new BlockControlView('a', 'X'));
     }
 }

@@ -1,14 +1,13 @@
 using Avalonia.Controls;
 using Betriebsmodi.ViewModels;
 
-namespace Betriebsmodi.UserControls;
+namespace Betriebsmodi.Views;
 
-public partial class BlockControl : UserControl
+public partial class BlockControlView : UserControl
 {
-    public BlockControl(char characterN, char keyN)
+    public BlockControlView(char characterN, char keyN)
     {
         InitializeComponent();
-
         DataContext = new BlockControlViewModel(characterN, keyN);
     }
 }

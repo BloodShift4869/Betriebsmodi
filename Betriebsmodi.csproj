@@ -23,16 +23,21 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1"/>
+        <PackageReference Include="ReactiveUI" Version="20.4.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="UserControls\BlockControl.axaml.cs">
-        <DependentUpon>BlockControl.axaml</DependentUpon>
+      <Compile Update="Views\MenuView.axaml.cs">
+        <DependentUpon>MenuView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
-      <AdditionalFiles Include="UserControls\BlockControl.axaml" />
+      <Compile Update="Views\FreeModeView.axaml.cs">
+        <DependentUpon>FreeModeView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\BlockControlView.axaml.cs">
+        <DependentUpon>BlockControlView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 </Project>

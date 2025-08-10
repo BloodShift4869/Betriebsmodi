@@ -8,11 +8,19 @@
         <entry key="BlockArray.axaml" value="Betriebsmodi.csproj" />
         <entry key="BlockControl.axaml" value="Betriebsmodi.csproj" />
         <entry key="BlockSingle.axaml" value="Betriebsmodi.csproj" />
+        <entry key="UserControls/BlockControl.axaml" value="Betriebsmodi.csproj" />
+        <entry key="UserControls/FreeMode.axaml" value="Betriebsmodi.csproj" />
+        <entry key="UserControls/FreeModeSelection.axaml" value="Betriebsmodi.csproj" />
+        <entry key="UserControls/GuidedMode.axaml" value="Betriebsmodi.csproj" />
+        <entry key="UserControls/MenuView.axaml" value="Betriebsmodi.csproj" />
         <entry key="Views/FreeMode.axaml" value="Betriebsmodi.csproj" />
         <entry key="Views/FreeModeSelection.axaml" value="Betriebsmodi.csproj" />
+        <entry key="Views/FreeModeView.axaml" value="Betriebsmodi.csproj" />
         <entry key="Views/GuidedMode.axaml" value="Betriebsmodi.csproj" />
         <entry key="Views/MainWindow.axaml" value="Betriebsmodi.csproj" />
+        <entry key="Views/MainWindowView.axaml" value="Betriebsmodi.csproj" />
         <entry key="Views/Menu.axaml" value="Betriebsmodi.csproj" />
+        <entry key="Views/MenuView.axaml" value="Betriebsmodi.csproj" />
       </map>
     </option>
   </component>

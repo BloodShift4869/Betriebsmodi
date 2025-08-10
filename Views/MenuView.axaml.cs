@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace Betriebsmodi.Views;
 
-public partial class Menu : Window
+public partial class MenuView : UserControl
 {
-    public Menu()
+    public MenuView()
     {
         InitializeComponent();
     }

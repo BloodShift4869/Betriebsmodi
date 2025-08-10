@@ -1,18 +1,11 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="using:Betriebsmodi.ViewModels"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="Betriebsmodi.Views.FreeMode"
-        x:DataType="vm:FreeModeViewModel"
-        Title="Freier Modus">
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:FreeModeViewModel />
-    </Design.DataContext>
-
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Betriebsmodi.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Betriebsmodi.Views.FreeModeView"
+             x:DataType="vm:FreeModeViewModel">
     <Grid RowDefinitions="Auto,Auto,*" ColumnDefinitions="*, Auto, Auto" RowSpacing="10">
         <!-- Title bar -->
         <TextBlock Grid.Row="0" Grid.Column="0" Margin="30, 30, 0, 0" VerticalAlignment="Center" FontSize="36"
@@ -56,4 +49,4 @@
             <TextBlock Text="ms" Margin="10, 10"></TextBlock>
         </StackPanel>
     </Grid>
-</Window>
+</UserControl>
