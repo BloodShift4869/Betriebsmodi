@@ -9,24 +9,27 @@
     <Design.DataContext>
         <vm:MenuViewModel />
     </Design.DataContext>
-    
-    <StackPanel VerticalAlignment="Center">
-        <TextBlock FontSize="36"
+
+    <Grid RowDefinitions="Auto,*">
+        <TextBlock Grid.Row="0" FontSize="36"
                    TextAlignment="Center"
-                   FontWeight="Bold">
+                   FontWeight="Bold"
+                   Margin="0 30 0 0">
             Betriebsmodi
         </TextBlock>
-        <Button Command="{Binding OpenGuidedMode}" Background="SteelBlue" HorizontalAlignment="Center" Width="200"
-                HorizontalContentAlignment="Center" Margin="0 30 0 0">
-            Geführter Modus
-        </Button>
-        <Button Command="{Binding OpenFreeModeSelection}" Background="SteelBlue" HorizontalAlignment="Center"
-                Width="200" HorizontalContentAlignment="Center" Margin="0 20">
-            Freier Modus
-        </Button>
-        <Button Command="{Binding ExitApplication}" HorizontalAlignment="Center" Width="200"
-                HorizontalContentAlignment="Center">
-            Anwendung beenden
-        </Button>
-    </StackPanel>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <Button Command="{Binding OpenGuidedMode}" Background="SteelBlue" HorizontalAlignment="Center" Width="200"
+                    HorizontalContentAlignment="Center">
+                Geführter Modus
+            </Button>
+            <Button Command="{Binding OpenFreeModeSelection}" Background="SteelBlue" HorizontalAlignment="Center"
+                    Width="200" HorizontalContentAlignment="Center" Margin="0 20">
+                Freier Modus
+            </Button>
+            <Button Command="{Binding ExitApplication}" HorizontalAlignment="Center" Width="200"
+                    HorizontalContentAlignment="Center">
+                Anwendung beenden
+            </Button>
+        </StackPanel>
+    </Grid>
 </UserControl>
