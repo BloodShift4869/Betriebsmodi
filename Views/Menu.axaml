@@ -1,0 +1,19 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:Betriebsmodi.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Betriebsmodi.Views.Menu"
+        x:DataType="vm:MenuViewModel">
+    <StackPanel VerticalAlignment="Center">
+        <TextBlock FontSize="36"
+                   TextAlignment="Center"
+                   FontWeight="Bold">
+            Betriebsmodi
+        </TextBlock>
+        <Button Command="{Binding OpenGuidedMode}" Background="SteelBlue" HorizontalAlignment="Center" Width="200" HorizontalContentAlignment="Center" Margin="0 30 0 0">Geführter Modus</Button>
+        <Button Command="{Binding OpenFreeModeSelection}" Background="SteelBlue" HorizontalAlignment="Center" Width="200" HorizontalContentAlignment="Center" Margin="0 20">Freier Modus</Button>
+        <Button Command="{Binding ExitApplication}" HorizontalAlignment="Center" Width="200" HorizontalContentAlignment="Center">Anwendung beenden</Button>
+    </StackPanel>
+</Window>

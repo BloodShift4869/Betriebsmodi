@@ -10,6 +10,7 @@ public partial class BlockControlViewModel : ViewModelBase
     public string KeyString { get; }
     public string CipherString { get; }
     public string OutputString { get; }
+    public static string Result { get; set;  }
 
     private BlockControlModel _model;
 
@@ -24,6 +25,7 @@ public partial class BlockControlViewModel : ViewModelBase
         KeyString = convert(_model.Key, 6);
         CipherString = convert(_model.Cipher, 6);
         OutputString = convert(_model.Output, 6);
+        Result += (char)(_model.Output + 64);
     }
 
     private byte CalculateXOr(byte c, byte k)
@@ -33,17 +35,19 @@ public partial class BlockControlViewModel : ViewModelBase
 
     private byte Permutate(byte c)
     {
-        // TODO Resolve Array out of bounds error
-        int[] pbox = { 1, 0, 3, 2, 4, 5 };
-        /*char[] output = new char[8];
-        string cipher = convert(c, 6);
-
+        int[] pbox = { 3, 0, 1, 5, 2, 4 };
+        byte result = 0;
+        
         for (int i = 0; i < pbox.Length; i++)
         {
-            output[pbox[i]] = cipher[i];
-        }*/
-
-        return 0; // Convert.ToByte(output);
+            // Fetch bit at index i
+            int bit = (c >> i) & 1;
+            
+            // Store bit at new position
+            result |= (byte)(bit << pbox[i]);
+        }
+        
+        return result;
     }
 
     private string convert(byte input, short bitLength)

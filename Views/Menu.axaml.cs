@@ -1,10 +1,12 @@
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
 
 namespace Betriebsmodi.Views;
 
-public partial class MainWindow : Window
+public partial class Menu : Window
 {
-    public MainWindow()
+    public Menu()
     {
         InitializeComponent();
     }

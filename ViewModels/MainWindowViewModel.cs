@@ -1,9 +1,24 @@
-﻿namespace Betriebsmodi.ViewModels;
+﻿using System.Windows.Input;
+using Betriebsmodi.Views;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
-public partial class MainWindowViewModel : ViewModelBase
+namespace Betriebsmodi.ViewModels;
+
+public partial class MainWindowViewModel : ObservableObject
 {
-    public string Mode { get; } = "ECB";
-    public string Cores { get; } = "1";
-    public string MsWhole { get; } = "2";
-    public string MsDecimal { get; } = "41";
+    [ObservableProperty] private object? currentView = new Menu();
+    
+    public ICommand ChangeViewCommand { get; }
+
+    public MainWindowViewModel()
+    {
+        currentView = new Menu();
+        
+        ChangeViewCommand = new RelayCommand(() =>
+        {
+            CurrentView = new GuidedMode();
+        });
+        
+    }
 }
