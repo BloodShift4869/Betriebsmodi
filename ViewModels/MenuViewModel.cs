@@ -15,7 +15,7 @@ public class MenuViewModel : ViewModelBase
     
     public void OpenGuidedMode()
     {
-        
+        _mainViewModel.NavigateTo(new GuidedModeViewModel(_mainViewModel));
     }
 
     public void OpenFreeModeSelection()

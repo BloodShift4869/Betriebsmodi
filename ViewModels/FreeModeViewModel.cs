@@ -15,7 +15,5 @@ public partial class FreeModeViewModel : ViewModelBase
     {
         _mainViewModel = mainViewModel;
         Mode = mode;
-        
-        
     }
 }

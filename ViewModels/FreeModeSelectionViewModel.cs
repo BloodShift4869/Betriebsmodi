@@ -27,4 +27,9 @@ public partial class FreeModeSelectionViewModel : ViewModelBase
     {
         _mainViewModel.NavigateTo(new FreeModeViewModel(_mainViewModel, SelectedMode, PlainText, Key));
     }
+
+    public void OpenMenu()
+    {
+        _mainViewModel.NavigateTo(new MenuViewModel(_mainViewModel));
+    }
 }

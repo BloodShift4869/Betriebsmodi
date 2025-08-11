@@ -6,7 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Betriebsmodi.Views.FreeModeSelectionView"
              x:DataType="vm:FreeModeSelectionViewModel">
-    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto, *" RowSpacing="10" Margin="30 30">
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" ColumnDefinitions="Auto, *" RowSpacing="10" Margin="30 30">
         <!-- Title -->
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="36" Margin="0 0 0 20"
                    Text="Einrichtung des freien Modus"
@@ -15,7 +15,8 @@
         <!-- Mode selector -->
         <TextBlock VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Text="Betriebsmodus:" />
         <ComboBox Grid.Row="1" Grid.Column="1" SelectedIndex="0" MaxDropDownHeight="100" VerticalAlignment="Center"
-                  Margin="10 0" ItemsSource="{Binding AvailableModes}" SelectedItem="{Binding SelectedMode, Mode=TwoWay}" />
+                  Margin="10 0" ItemsSource="{Binding AvailableModes}"
+                  SelectedItem="{Binding SelectedMode, Mode=TwoWay}" />
 
         <!-- Plaintext input -->
         <TextBlock VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Text="Klartext:" />
@@ -29,5 +30,9 @@
         <Button Grid.Row="4" Grid.Column="1" Background="SteelBlue"
                 Width="150" HorizontalContentAlignment="Center" VerticalAlignment="Top" Content="Verschlüsseln"
                 Margin="10 0" Command="{Binding OpenFreeMode}" />
+
+        <Button Grid.Row="5" Grid.Column="0"
+                Width="150" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Content="Zurück"
+                Margin="10 0" Command="{Binding OpenMenu}" />
     </Grid>
 </UserControl>
