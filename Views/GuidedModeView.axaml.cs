@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace Betriebsmodi.Views;
 
-public partial class GuidedMode : Window
+public partial class GuidedModeView : UserControl
 {
-    public GuidedMode()
+    public GuidedModeView()
     {
         InitializeComponent();
     }

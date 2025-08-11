@@ -5,6 +5,8 @@ namespace Betriebsmodi.ViewModels;
 
 public partial class CTRViewModel : ViewModelBase
 {
+    private readonly MainWindowViewModel _mainViewModel;
+    
     public char CharacterN { get; }
     public string CharacterString { get; }
     public string NonceString { get; }
@@ -16,8 +18,10 @@ public partial class CTRViewModel : ViewModelBase
 
     private BlockControlModel _model;
 
-    public CTRViewModel(char characterN, char keyN)
+    public CTRViewModel(MainWindowViewModel mainViewModel, char characterN, char keyN)
     {
+        _mainViewModel = mainViewModel;
+        
         _model = new BlockControlModel(characterN, keyN, true);
         _model.Cipher = CalculateXOr(_model.IV, _model.Key);
         _model.InterimResult = Permutate(_model.Cipher);

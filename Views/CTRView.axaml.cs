@@ -8,6 +8,5 @@ public partial class CTRView : UserControl
     public CTRView(char characterN, char keyN)
     {
         InitializeComponent();
-        DataContext = new CTRViewModel(characterN, keyN);
     }
 }
