@@ -14,5 +14,5 @@
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
-    <TransitioningContentControl Content="{Binding CurrentPage}" />
+    <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
 </Window>
