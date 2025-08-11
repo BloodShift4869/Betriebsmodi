@@ -5,6 +5,7 @@
         xmlns:vm="using:Betriebsmodi.ViewModels"
         xmlns:views="using:Betriebsmodi.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Height="650"
         x:Class="Betriebsmodi.Views.MainWindowView"
         x:CompileBindings="True"
         x:DataType="vm:MainWindowViewModel"

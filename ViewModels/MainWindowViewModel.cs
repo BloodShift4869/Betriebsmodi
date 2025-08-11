@@ -21,6 +21,6 @@ public partial class MainWindowViewModel : ViewModelBase
     
     public MainWindowViewModel()
     {
-        _CurrentPage = Pages[0];
+        _CurrentPage = Pages[3];
     }
 }

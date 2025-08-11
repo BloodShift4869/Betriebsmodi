@@ -3,10 +3,12 @@ using Betriebsmodi.Models;
 
 namespace Betriebsmodi.ViewModels;
 
-public partial class BlockControlViewModel : ViewModelBase
+public partial class CBCViewModel : ViewModelBase
 {
     public char CharacterN { get; }
     public string CharacterString { get; }
+    public string IVString { get; }
+    public string InterimString { get; }
     public string KeyString { get; }
     public string CipherString { get; }
     public string OutputString { get; }
@@ -14,14 +16,17 @@ public partial class BlockControlViewModel : ViewModelBase
 
     private BlockControlModel _model;
 
-    public BlockControlViewModel(char characterN, char keyN)
+    public CBCViewModel(char characterN, char keyN)
     {
-        _model = new BlockControlModel(characterN, keyN, false);
-        _model.Cipher = CalculateXOr(_model.Character, _model.Key);
+        _model = new BlockControlModel(characterN, keyN, true);
+        _model.InterimResult = CalculateXOr(_model.Character, _model.IV);
+        _model.Cipher = CalculateXOr(_model.InterimResult, _model.Key);
         _model.Output = Permutate(_model.Cipher);
 
         CharacterN = characterN;
         CharacterString = convert(_model.Character, 6);
+        IVString = convert(_model.IV, 6);
+        InterimString = convert(_model.InterimResult, 6);
         KeyString = convert(_model.Key, 6);
         CipherString = convert(_model.Cipher, 6);
         OutputString = convert(_model.Output, 6);
@@ -35,7 +40,7 @@ public partial class BlockControlViewModel : ViewModelBase
 
     private byte Permutate(byte c)
     {
-        int[] pbox = { 3, 2, 0, 5, 1, 4 };
+        int[] pbox = {  3, 2, 0, 5, 1, 4 };
         byte result = 0;
         
         for (int i = 0; i < pbox.Length; i++)

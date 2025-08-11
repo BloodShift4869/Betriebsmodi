@@ -9,6 +9,6 @@ public partial class FreeModeView : UserControl
     public FreeModeView()
     {
         InitializeComponent();
-        BlockContainer.Children.Add(new BlockControlView('a', 'X'));
+        BlockContainer.Children.Add(new CTRView('a', 'X'));
     }
 }

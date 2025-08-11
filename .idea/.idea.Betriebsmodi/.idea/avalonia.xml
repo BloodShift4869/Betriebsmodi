@@ -13,6 +13,8 @@
         <entry key="UserControls/FreeModeSelection.axaml" value="Betriebsmodi.csproj" />
         <entry key="UserControls/GuidedMode.axaml" value="Betriebsmodi.csproj" />
         <entry key="UserControls/MenuView.axaml" value="Betriebsmodi.csproj" />
+        <entry key="Views/CBCView.axaml" value="Betriebsmodi.csproj" />
+        <entry key="Views/CTRView.axaml" value="Betriebsmodi.csproj" />
         <entry key="Views/FreeMode.axaml" value="Betriebsmodi.csproj" />
         <entry key="Views/FreeModeSelection.axaml" value="Betriebsmodi.csproj" />
         <entry key="Views/FreeModeView.axaml" value="Betriebsmodi.csproj" />

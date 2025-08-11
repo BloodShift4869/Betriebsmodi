@@ -39,5 +39,13 @@
         <DependentUpon>BlockControlView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+      <Compile Update="Views\CBCView.axaml.cs">
+        <DependentUpon>CBCView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\CTRView.axaml.cs">
+        <DependentUpon>CTRView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 </Project>

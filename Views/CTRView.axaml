@@ -4,17 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:Betriebsmodi.ViewModels"
              mc:Ignorable="d"
-             x:Class="Betriebsmodi.Views.BlockControlView"
-             x:DataType="vm:BlockControlViewModel">
-    <Grid RowDefinitions="40,40,40,40,40,40,40" RowSpacing="10" ColumnDefinitions="Auto, Auto">
+             x:Class="Betriebsmodi.Views.CTRView"
+             x:DataType="vm:CTRViewModel">
+    <Grid RowDefinitions="40,40,40,40,40,40,40,40,40,40" RowSpacing="10" ColumnDefinitions="Auto, Auto">
         <!-- User input (character n) -->
         <Border Grid.Column="0" Grid.Row="0" Width="40" Height="40" Margin="10 0 0 0" Background="LightGray"
                 HorizontalAlignment="Left">
             <TextBlock x:Name="CharacterN" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"
                        Text="{Binding CharacterN }" />
         </Border>
-        <!-- Bit representation -->
-        <ItemsControl ItemsSource="{Binding CharacterString}" Grid.Row="1" Grid.Column="0">
+        <!-- Nonce -->
+        <ItemsControl ItemsSource="{Binding NonceString}" Grid.Row="1" Grid.Column="0">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />
@@ -67,8 +67,43 @@
         <!-- P-box icon -->
         <Image Grid.Column="0" Grid.Row="5" Height="40" Width="250" Stretch="Fill"
                Source="/Assets/pbox.png" />
+        <!-- Interim result -->
+        <ItemsControl ItemsSource="{Binding InterimString}" Grid.Row="6" Grid.Column="0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                        <TextBlock Text="{Binding}" FontSize="24"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <!-- Bit representation -->
+        <ItemsControl ItemsSource="{Binding CharacterString}" Grid.Row="7" Grid.Column="0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Width="40" Height="40" Margin="10 0 0 0" Background="LightGray">
+                        <TextBlock Text="{Binding}" FontSize="24"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <!-- XOR icon -->
+        <Image Grid.Column="0" Grid.Row="8" Width="40" Height="40" HorizontalAlignment="Center"
+               Source="/Assets/xor.png" />
         <!-- Output block n -->
-        <ItemsControl ItemsSource="{Binding OutputString}" Grid.Row="6" Grid.Column="0">
+        <ItemsControl ItemsSource="{Binding OutputString}" Grid.Row="9" Grid.Column="0">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />
