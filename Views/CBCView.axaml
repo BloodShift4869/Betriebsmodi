@@ -30,7 +30,7 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
         <!-- IV -->
-        <ItemsControl ItemsSource="{Binding IVString}" Grid.Row="2" Grid.Column="0">
+        <ItemsControl ItemsSource="{Binding NonceString}" Grid.Row="2" Grid.Column="0">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />

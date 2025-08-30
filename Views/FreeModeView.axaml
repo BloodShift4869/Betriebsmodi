@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:Betriebsmodi.ViewModels"
+             xmlns:views="using:Betriebsmodi.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              x:Class="Betriebsmodi.Views.FreeModeView"
              x:DataType="vm:FreeModeViewModel">
@@ -26,17 +27,25 @@
         <!-- Main area -->
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" RowDefinitions="40,40,40,40,40,40,40,*"
               ColumnDefinitions="Auto,*" Margin="30 0 0 10" RowSpacing="10" ColumnSpacing="10">
-            <!-- Descriptive fields -->
-            <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Benutzereingabe:</TextBlock>
-            <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Bit. Repräsentation:</TextBlock>
-            <TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Schlüssel:</TextBlock>
-            <TextBlock Grid.Column="0" Grid.Row="4" VerticalAlignment="Center">Chiffre:</TextBlock>
-            <TextBlock Grid.Column="0" Grid.Row="6" VerticalAlignment="Center">Output Block n:</TextBlock>
+            <!-- Legend view -->
+            <views:ECBLegendView Grid.Column="0" Grid.Row="0" Grid.RowSpan="8" IsVisible="{Binding IsECB}" />
+            <views:CBCLegendView Grid.Column="0" Grid.Row="0" Grid.RowSpan="8" IsVisible="{Binding IsCBC}" />
+            <views:CTRLegendView Grid.Column="0" Grid.Row="0" Grid.RowSpan="8" IsVisible="{Binding IsCTR}" />
 
             <!-- ScrollViewer containing encryption blocks -->
             <ScrollViewer Grid.Row="0" Grid.Column="1" Grid.RowSpan="8" HorizontalScrollBarVisibility="Visible">
-                <StackPanel x:Name="BlockContainer" Orientation="Horizontal">
-                </StackPanel>
+                <ItemsControl ItemsSource="{Binding ModeViewModel}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ContentControl Content="{Binding}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </ScrollViewer>
         </Grid>
 

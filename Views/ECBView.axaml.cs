@@ -3,9 +3,9 @@ using Betriebsmodi.ViewModels;
 
 namespace Betriebsmodi.Views;
 
-public partial class CBCView : UserControl
+public partial class ECBView : UserControl
 {
-    public CBCView()
+    public ECBView()
     {
         InitializeComponent();
     }

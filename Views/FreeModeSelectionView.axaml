@@ -25,7 +25,7 @@
 
         <!-- Plaintext input -->
         <TextBlock VerticalAlignment="Center" Grid.Row="3" Grid.Column="0" Text="Schlüssel:" />
-        <TextBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Width="300" Margin="10 0" Text="{Binding Key}" />
+        <TextBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Width="300" Margin="10 0" Text="{Binding Key}" MaxLength="6"  />
 
         <Button Grid.Row="4" Grid.Column="1" Background="SteelBlue"
                 Width="150" HorizontalContentAlignment="Center" VerticalAlignment="Top" Content="Verschlüsseln"

@@ -16,7 +16,7 @@ public partial class FreeModeSelectionViewModel : ViewModelBase
 
     public Mode SelectedMode { get; set; } = Mode.ECB;
     public string PlainText { get; set; } = "Hello";
-    public string Key { get; set; } = "Schluessel";
+    public string Key { get; set; } = "010011";
 
     public FreeModeSelectionViewModel(MainWindowViewModel mainViewModel)
     {
