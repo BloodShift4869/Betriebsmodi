@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Betriebsmodi.ViewModels;
 
@@ -15,7 +16,7 @@ public partial class FreeModeViewModel : ViewModelBase
     public string MsWhole { get; } = "2";
     public string MsDecimal { get; } = "41";
     
-    public ObservableCollection<ViewModelBase> ModeViewModel { get; }
+    public ObservableCollection<CipherViewModelBase> ModeViewModel { get; } = new();
     
     public bool IsECB => Mode == FreeModeSelectionViewModel.Mode.ECB;
     public bool IsCBC => Mode == FreeModeSelectionViewModel.Mode.CBC;
@@ -27,9 +28,9 @@ public partial class FreeModeViewModel : ViewModelBase
         Mode = mode;
         PlainText = plainText;
         Key = Convert.ToByte(key, 2);
-        ModeViewModel = new ObservableCollection<ViewModelBase>();
         
         BuildModeViewModel();
+        _ = StartAnimation(300);
     }
     
     private void BuildModeViewModel()
@@ -50,13 +51,13 @@ public partial class FreeModeViewModel : ViewModelBase
                     if (i > 0)
                     {
                         CBCViewModel cbc = new CBCViewModel(PlainText[i], Key, nonce);
-                        nonce = Convert.ToByte(cbc.OutputString, 2);
+                        nonce = Convert.ToByte(cbc._OutputString, 2);
                         ModeViewModel.Add(cbc);
                     }
                     else
                     {
                         CBCViewModel cbc = new CBCViewModel(PlainText[i], Key);
-                        nonce = Convert.ToByte(cbc.OutputString, 2);
+                        nonce = Convert.ToByte(cbc._OutputString, 2);
                         ModeViewModel.Add(cbc);
                     }
                     break;
@@ -71,10 +72,15 @@ public partial class FreeModeViewModel : ViewModelBase
                         ctr = new CTRViewModel(PlainText[i], Key);
                     }
                     ModeViewModel.Add(ctr);
-                    nonce = Convert.ToByte(ctr.NonceString, 2);
+                    nonce = Convert.ToByte(ctr._NonceString, 2);
                     nonce++;
                     break;
             }
         }
+    }
+
+    private async Task StartAnimation(int speed)
+    {
+        foreach (var vm in ModeViewModel) await vm.StartAnimation(speed);
     }
 }

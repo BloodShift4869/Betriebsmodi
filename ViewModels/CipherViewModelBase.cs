@@ -1,4 +1,6 @@
 using System;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Betriebsmodi.Models;
 
 namespace Betriebsmodi.ViewModels;
@@ -8,13 +10,28 @@ public abstract class CipherViewModelBase : ViewModelBase
     public char CharacterN { get; set; }
     public string CharacterString { get; set; }
     public string KeyString { get; set; }
-    public string CipherString { get; set; }
-    public string OutputString { get; set; }
-    public static string Result { get; set; } = string.Empty;
+    public char Result { get; set; }
+    public ObservableCollection<string> CipherString { get; set; } = new();
+    public ObservableCollection<string> OutputString { get; set; } = new();
+    
+    public string _CipherString { get; set; }
+    public string _OutputString { get; set; }
 
     protected BlockModel _model;
     
     protected abstract void ExecuteCipher();
+    protected abstract void PlaceholderSetup(short bitLength);
+
+    public abstract Task StartAnimation(int speed);
+
+    protected async Task RevealBits(ObservableCollection<string> animationItem, string source, int speed = 300)
+    {
+        for (int i = 0; i < source.Length; i++) 
+        {
+            animationItem[i] = source[i].ToString(); 
+            await Task.Delay(speed);
+        }
+    }
     
     protected byte CalculateXOr(byte a, byte b)
     {
