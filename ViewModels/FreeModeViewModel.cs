@@ -1,45 +1,56 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm;
 
 namespace Betriebsmodi.ViewModels;
 
 public partial class FreeModeViewModel : ViewModelBase
 {
     private readonly MainWindowViewModel _mainViewModel;
-    
+
     public FreeModeSelectionViewModel.Mode Mode { get; }
     public string PlainText { get; }
     public byte Key { get; }
     public string Cores { get; } = "1";
-    public string MsWhole { get; } = "2";
-    public string MsDecimal { get; } = "41";
+
+    [ObservableProperty]
+    private int _MsWhole = 0;
     
+    [ObservableProperty]
+    private int _MsDecimal = 0;
+
     public ObservableCollection<CipherViewModelBase> ModeViewModel { get; } = new();
-    
+
     public bool IsECB => Mode == FreeModeSelectionViewModel.Mode.ECB;
     public bool IsCBC => Mode == FreeModeSelectionViewModel.Mode.CBC;
     public bool IsCTR => Mode == FreeModeSelectionViewModel.Mode.CTR;
 
-    public FreeModeViewModel(MainWindowViewModel mainViewModel, FreeModeSelectionViewModel.Mode mode, string plainText, string key)
+    private bool isRunning = true;
+
+    public FreeModeViewModel(MainWindowViewModel mainViewModel, FreeModeSelectionViewModel.Mode mode, string plainText,
+        string key)
     {
         _mainViewModel = mainViewModel;
         Mode = mode;
         PlainText = plainText;
         Key = Convert.ToByte(key, 2);
-        
+
         BuildModeViewModel();
         _ = StartAnimation(300);
+        _ = Timer(300/2);
     }
-    
+
     private void BuildModeViewModel()
     {
         if (string.IsNullOrEmpty(PlainText))
             return;
-        
+
         byte nonce = 0;
-        
+
         for (int i = 0; i < PlainText.Length; i++)
         {
             switch (Mode)
@@ -60,6 +71,7 @@ public partial class FreeModeViewModel : ViewModelBase
                         nonce = Convert.ToByte(cbc._OutputString, 2);
                         ModeViewModel.Add(cbc);
                     }
+
                     break;
                 case FreeModeSelectionViewModel.Mode.CTR:
                     CTRViewModel ctr;
@@ -71,6 +83,7 @@ public partial class FreeModeViewModel : ViewModelBase
                     {
                         ctr = new CTRViewModel(PlainText[i], Key);
                     }
+
                     ModeViewModel.Add(ctr);
                     nonce = Convert.ToByte(ctr._NonceString, 2);
                     nonce++;
@@ -82,5 +95,22 @@ public partial class FreeModeViewModel : ViewModelBase
     private async Task StartAnimation(int speed)
     {
         foreach (var vm in ModeViewModel) await vm.StartAnimation(speed);
+        isRunning = false;
+    }
+
+    private async Task Timer(int speed)
+    {
+        while (isRunning)
+        {
+            MsDecimal++;
+            
+            if (MsDecimal > 59)
+            {
+                MsDecimal = 0;
+                MsWhole++;
+            }
+
+            await Task.Delay(speed);
+        }
     }
 }
