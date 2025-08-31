@@ -25,11 +25,11 @@ public partial class FreeModeSelectionViewModel : ViewModelBase
 
     public void OpenFreeMode()
     {
-        _mainViewModel.NavigateTo(new FreeModeViewModel(_mainViewModel, SelectedMode, PlainText, Key));
+        _mainViewModel.CurrentViewModel = new FreeModeViewModel(_mainViewModel, SelectedMode, PlainText, Key);
     }
 
     public void OpenMenu()
     {
-        _mainViewModel.NavigateTo(new MenuViewModel(_mainViewModel));
+        _mainViewModel.CurrentViewModel = new MenuViewModel(_mainViewModel);
     }
 }
