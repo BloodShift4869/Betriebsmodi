@@ -54,9 +54,10 @@ public partial class CBCViewModel : CipherViewModelBase
 
     public override async Task StartAnimation(int speed)
     {
-        await RevealBits(NonceString, _NonceString, speed);
-        await RevealBits(InterimString, _InterimString, speed);
-        await RevealBits(CipherString, _CipherString, speed);
-        await RevealBits(OutputString, _OutputString, speed);
+        AnimationSpeed = speed;
+        await RevealBits(NonceString, _NonceString);
+        await RevealBits(InterimString, _InterimString);
+        await RevealBits(CipherString, _CipherString);
+        await RevealBits(OutputString, _OutputString);
     }
 }

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm;
 
 namespace Betriebsmodi.ViewModels;
 
@@ -12,6 +9,8 @@ public partial class FreeModeViewModel : ViewModelBase
 {
     private readonly MainWindowViewModel _mainViewModel;
 
+    private int[] speedSelection = new[] { 300, 150 };
+    
     public FreeModeSelectionViewModel.Mode Mode { get; }
     public string PlainText { get; }
     public byte Key { get; }
@@ -22,6 +21,9 @@ public partial class FreeModeViewModel : ViewModelBase
     
     [ObservableProperty]
     private int _MsDecimal = 0;
+    
+    [ObservableProperty]
+    private int _Speed = 300;
 
     public ObservableCollection<CipherViewModelBase> ModeViewModel { get; } = new();
 
@@ -38,10 +40,11 @@ public partial class FreeModeViewModel : ViewModelBase
         Mode = mode;
         PlainText = plainText;
         Key = Convert.ToByte(key, 2);
+        Speed = speedSelection[0];
 
         BuildModeViewModel();
-        _ = StartAnimation(300);
-        _ = Timer(300/2);
+        _ = StartAnimation(1000);
+        _ = Timer();
     }
 
     private void BuildModeViewModel()
@@ -92,13 +95,21 @@ public partial class FreeModeViewModel : ViewModelBase
         }
     }
 
-    private async Task StartAnimation(int speed)
+    public void ChangeSpeed(int selection)
     {
-        foreach (var vm in ModeViewModel) await vm.StartAnimation(speed);
+        Speed = speedSelection[selection];
+        
+        foreach (var vm in ModeViewModel) vm.AnimationSpeed = Speed;
+    }
+
+    private async Task StartAnimation(int delay)
+    {
+        await Task.Delay(delay);
+        foreach (var vm in ModeViewModel) await vm.StartAnimation(Speed);
         isRunning = false;
     }
 
-    private async Task Timer(int speed)
+    private async Task Timer()
     {
         while (isRunning)
         {
@@ -110,7 +121,7 @@ public partial class FreeModeViewModel : ViewModelBase
                 MsWhole++;
             }
 
-            await Task.Delay(speed);
+            await Task.Delay(Speed/2);
         }
     }
 }

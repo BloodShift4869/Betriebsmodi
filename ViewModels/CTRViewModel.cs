@@ -52,9 +52,10 @@ public partial class CTRViewModel : CipherViewModelBase
 
     public override async Task StartAnimation(int speed)
     {
-        await RevealBits(NonceString, _NonceString, speed);
-        await RevealBits(CipherString, _CipherString, speed);
-        await RevealBits(InterimString, _InterimString, speed);
-        await RevealBits(OutputString, _OutputString, speed);
+        AnimationSpeed = speed;
+        await RevealBits(NonceString, _NonceString);
+        await RevealBits(CipherString, _CipherString);
+        await RevealBits(InterimString, _InterimString);
+        await RevealBits(OutputString, _OutputString);
     }
 }

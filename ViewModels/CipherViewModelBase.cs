@@ -2,10 +2,11 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Betriebsmodi.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Betriebsmodi.ViewModels;
 
-public abstract class CipherViewModelBase : ViewModelBase
+public abstract partial class CipherViewModelBase : ViewModelBase
 {
     public char CharacterN { get; set; }
     public string CharacterString { get; set; }
@@ -18,18 +19,21 @@ public abstract class CipherViewModelBase : ViewModelBase
     public string _OutputString { get; set; }
 
     protected BlockModel _model;
+
+    [ObservableProperty]
+    private int _animationSpeed = 300;
     
     protected abstract void ExecuteCipher();
     protected abstract void PlaceholderSetup(short bitLength);
 
     public abstract Task StartAnimation(int speed);
 
-    protected async Task RevealBits(ObservableCollection<string> animationItem, string source, int speed = 300)
+    protected async Task RevealBits(ObservableCollection<string> animationItem, string source)
     {
         for (int i = 0; i < source.Length; i++) 
         {
             animationItem[i] = source[i].ToString(); 
-            await Task.Delay(speed);
+            await Task.Delay(AnimationSpeed);
         }
     }
     

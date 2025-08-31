@@ -41,7 +41,8 @@ public partial class ECBViewModel : CipherViewModelBase
     
     public override async Task StartAnimation(int speed)
     {
-        await RevealBits(CipherString, _CipherString, speed);
-        await RevealBits(OutputString, _OutputString, speed);
+        AnimationSpeed = speed;
+        await RevealBits(CipherString, _CipherString);
+        await RevealBits(OutputString, _OutputString);
     }
 }

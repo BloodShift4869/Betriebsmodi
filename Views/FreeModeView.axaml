@@ -20,8 +20,12 @@
 
         <!-- Speed selection -->
         <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label>1x</Label>
-            <Label>2x</Label>
+            <Button Background="Transparent" Command="{Binding ChangeSpeed}" CommandParameter="0">
+                <Image Width="20" Height="20" Source="/Assets/play.png" />
+                </Button>
+            <Button Background="Transparent" Command="{Binding ChangeSpeed}" CommandParameter="1">
+                <Image Width="20" Height="20" Source="/Assets/fastforward.png" />
+            </Button>
         </StackPanel>
 
         <!-- Main area -->
