@@ -16,7 +16,7 @@ public partial class FreeModeSelectionViewModel : ViewModelBase
 
     public Mode SelectedMode { get; set; } = Mode.ECB;
     public string PlainText { get; set; } = "Hello";
-    public string Key { get; set; } = "Schluessel";
+    public string Key { get; set; } = "010011";
 
     public FreeModeSelectionViewModel(MainWindowViewModel mainViewModel)
     {
@@ -25,11 +25,11 @@ public partial class FreeModeSelectionViewModel : ViewModelBase
 
     public void OpenFreeMode()
     {
-        _mainViewModel.NavigateTo(new FreeModeViewModel(_mainViewModel, SelectedMode, PlainText, Key));
+        _mainViewModel.CurrentViewModel = new FreeModeViewModel(_mainViewModel, SelectedMode, PlainText, Key);
     }
 
     public void OpenMenu()
     {
-        _mainViewModel.NavigateTo(new MenuViewModel(_mainViewModel));
+        _mainViewModel.CurrentViewModel = new MenuViewModel(_mainViewModel);
     }
 }

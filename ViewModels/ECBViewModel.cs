@@ -4,16 +4,11 @@ using Betriebsmodi.Models;
 
 namespace Betriebsmodi.ViewModels;
 
-public partial class CTRViewModel : CipherViewModelBase
+public partial class ECBViewModel : CipherViewModelBase
 {
-    public string _NonceString { get; }
-    public string _InterimString { get; }
-    public ObservableCollection<string> NonceString { get; } = new();
-    public ObservableCollection<string> InterimString { get; } = new();
-
-    public CTRViewModel(char characterN, byte key, byte? nonce = null)
+    public ECBViewModel(char characterN, byte key)
     {
-        _model = nonce == null ? new BlockModel(characterN, key, true) : new BlockModel(characterN, key, nonce.Value);
+        _model = new BlockModel(characterN, key, false);
         
         CharacterN = characterN;
         CharacterString = ConvertToString(_model.Character, 6);
@@ -27,9 +22,6 @@ public partial class CTRViewModel : CipherViewModelBase
         
         _CipherString = ConvertToString(_model.Cipher, 6);
         _OutputString = ConvertToString(_model.Output, 6);
-        Result += (char)(_model.Output + 64);
-        _NonceString = ConvertToString(_model.Nonce, 6);
-        _InterimString = ConvertToString(_model.InterimResult, 6);
     }
 
     protected override void PlaceholderSetup(short bitLength)
@@ -38,24 +30,19 @@ public partial class CTRViewModel : CipherViewModelBase
         {
             CipherString.Add("");
             OutputString.Add("");
-            NonceString.Add("");
-            InterimString.Add("");
         }
     }
-
+    
     protected override void ExecuteCipher()
     {
-        _model.Cipher = CalculateXOr(_model.Nonce, _model.Key);
-        _model.InterimResult = Permutate(_model.Cipher);
-        _model.Output = CalculateXOr(_model.InterimResult, _model.Character);
+        _model.Cipher = CalculateXOr(_model.Character, _model.Key);
+        _model.Output = Permutate(_model.Cipher);
     }
-
+    
     public override async Task StartAnimation(int speed)
     {
         AnimationSpeed = speed;
-        await RevealBits(NonceString, _NonceString);
         await RevealBits(CipherString, _CipherString);
-        await RevealBits(InterimString, _InterimString);
         await RevealBits(OutputString, _OutputString);
     }
 }

@@ -1,62 +1,63 @@
 using System;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Betriebsmodi.Models;
 
 namespace Betriebsmodi.ViewModels;
 
-public partial class CBCViewModel : ViewModelBase
+public partial class CBCViewModel : CipherViewModelBase
 {
-    public char CharacterN { get; }
-    public string CharacterString { get; }
-    public string IVString { get; }
-    public string InterimString { get; }
-    public string KeyString { get; }
-    public string CipherString { get; }
-    public string OutputString { get; }
-    public static string Result { get; set;  }
-
-    private BlockControlModel _model;
-
-    public CBCViewModel(char characterN, char keyN)
+    public ObservableCollection<string> NonceString { get; } = new();
+    public ObservableCollection<string> InterimString { get; } = new();
+    private string _NonceString { get; }
+    private string _InterimString { get; }
+    
+    public CBCViewModel(char characterN, byte key, byte? nonce = null)
     {
-        _model = new BlockControlModel(characterN, keyN, true);
-        _model.InterimResult = CalculateXOr(_model.Character, _model.IV);
+        _model = nonce == null ? new BlockModel(characterN, key, true) : new BlockModel(characterN, key, nonce.Value);
+        
+        CharacterN = characterN;
+        CharacterString = ConvertToString(_model.Character, 6);
+        KeyString = ConvertToString(_model.Key, 6);
+        
+        // Setup placeholder
+        PlaceholderSetup(6);
+        
+        // Execute cipher-specific logic
+        ExecuteCipher();
+        
+        _CipherString = ConvertToString(_model.Cipher, 6);
+        _OutputString = ConvertToString(_model.Output, 6);
+        Result += (char)(_model.Output + 64);
+        _NonceString = ConvertToString(_model.Nonce, 6);
+        _InterimString = ConvertToString(_model.InterimResult, 6);
+    }
+
+    protected override void PlaceholderSetup(short bitLength)
+    {
+        for (int i = 0; i < bitLength; i++)
+        {
+            CipherString.Add("");
+            OutputString.Add("");
+            NonceString.Add("");
+            InterimString.Add("");
+        }
+    }
+
+    protected override void ExecuteCipher()
+    {
+        _model.InterimResult = CalculateXOr(_model.Character, _model.Nonce);
         _model.Cipher = CalculateXOr(_model.InterimResult, _model.Key);
         _model.Output = Permutate(_model.Cipher);
-
-        CharacterN = characterN;
-        CharacterString = convert(_model.Character, 6);
-        IVString = convert(_model.IV, 6);
-        InterimString = convert(_model.InterimResult, 6);
-        KeyString = convert(_model.Key, 6);
-        CipherString = convert(_model.Cipher, 6);
-        OutputString = convert(_model.Output, 6);
-        Result += (char)(_model.Output + 64);
     }
 
-    private byte CalculateXOr(byte c, byte k)
-    {
-        return (byte)(c ^ k);
-    }
 
-    private byte Permutate(byte c)
+    public override async Task StartAnimation(int speed)
     {
-        int[] pbox = {  3, 2, 0, 5, 1, 4 };
-        byte result = 0;
-        
-        for (int i = 0; i < pbox.Length; i++)
-        {
-            // Fetch bit at index i
-            int bit = (c >> i) & 1;
-            
-            // Store bit at new position
-            result |= (byte)(bit << pbox[i]);
-        }
-        
-        return result;
-    }
-
-    private string convert(byte input, short bitLength)
-    {
-        return Convert.ToString(input, 2).PadLeft(bitLength, '0');
+        AnimationSpeed = speed;
+        await RevealBits(NonceString, _NonceString);
+        await RevealBits(InterimString, _InterimString);
+        await RevealBits(CipherString, _CipherString);
+        await RevealBits(OutputString, _OutputString);
     }
 }

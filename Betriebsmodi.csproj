@@ -34,8 +34,8 @@
         <DependentUpon>FreeModeView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
-      <Compile Update="Views\BlockControlView.axaml.cs">
-        <DependentUpon>BlockControlView.axaml</DependentUpon>
+      <Compile Update="Views\ECBView.axaml.cs">
+        <DependentUpon>ECBView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
       <Compile Update="Views\CBCView.axaml.cs">

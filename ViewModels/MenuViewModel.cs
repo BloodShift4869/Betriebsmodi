@@ -15,12 +15,12 @@ public class MenuViewModel : ViewModelBase
     
     public void OpenGuidedMode()
     {
-        _mainViewModel.NavigateTo(new GuidedModeViewModel(_mainViewModel));
+        _mainViewModel.CurrentViewModel = new GuidedModeViewModel(_mainViewModel);
     }
 
     public void OpenFreeModeSelection()
     {
-        _mainViewModel.NavigateTo(new FreeModeSelectionViewModel(_mainViewModel));
+        _mainViewModel.CurrentViewModel = new FreeModeSelectionViewModel(_mainViewModel);
     }
 
     public void ExitApplication()

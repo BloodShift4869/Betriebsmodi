@@ -5,7 +5,7 @@ namespace Betriebsmodi.Views;
 
 public partial class CTRView : UserControl
 {
-    public CTRView(char characterN, char keyN)
+    public CTRView()
     {
         InitializeComponent();
     }

@@ -1,0 +1,16 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Betriebsmodi.Views.CTRLegendView">
+    <Grid RowDefinitions="40,40,40,40,40,40,40,40,40,40" RowSpacing="10">
+        <TextBlock Grid.Row="0" VerticalAlignment="Center">Benutzereingabe:</TextBlock>
+        <TextBlock Grid.Row="1" VerticalAlignment="Center">Nonce:</TextBlock>
+        <TextBlock Grid.Row="2" VerticalAlignment="Center">Schlüssel:</TextBlock>
+        <TextBlock Grid.Row="4" VerticalAlignment="Center">Chiffre:</TextBlock>
+        <TextBlock Grid.Row="6" VerticalAlignment="Center">Zwischenergebnis:</TextBlock>
+        <TextBlock Grid.Row="7" VerticalAlignment="Center">Bit. Repräsentation:</TextBlock>
+        <TextBlock Grid.Row="9" VerticalAlignment="Center">Output Block n:</TextBlock>
+    </Grid>
+</UserControl>
